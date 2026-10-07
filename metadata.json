@@ -1,0 +1,6 @@
+{
+  "name": "Prophet John Lord | Official Ministry Website",
+  "description": "Prophetic Voice. Kingdom Impact. Transforming Lives. Official ministry portal of Prophet John Lord featuring prophetic teachings, sermons, upcoming events, and kingdom resources.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  --black: #050505;
+  --dark-green: #0B2418;
+  --green: #168A45;
+  --light-green: #63D98A;
+  --white: #FFFFFF;
+  --off-white: #F5F7F5;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--off-white);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Typography pairings */
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-clean {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Subtle cinematic effects */
+.bg-cinematic-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(22, 138, 69, 0.12) 0%, rgba(11, 36, 24, 0.05) 45%, rgba(5, 5, 5, 0) 75%);
+}
+
+.bg-cinematic-dark {
+  background: radial-gradient(circle at 50% 0%, #0b2418 0%, #050505 60%);
+}
+
+/* Smooth transitions */
+* {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #168a45;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #63d98a;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
