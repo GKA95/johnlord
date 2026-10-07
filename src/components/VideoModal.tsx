@@ -1,6 +1,7 @@
 import React from 'react';
 import { SermonItem } from '../types';
 import { X, ExternalLink, BookOpen, Clock } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface VideoModalProps {
   sermon: SermonItem | null;
@@ -8,18 +9,25 @@ interface VideoModalProps {
 }
 
 export const VideoModal: React.FC<VideoModalProps> = ({ sermon, onClose }) => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   if (!sermon) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 md:p-10 bg-black/90 backdrop-blur-md animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-labelledby="video-modal-title"
     >
-      <div className="relative w-full max-w-4xl bg-[#050505] border border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[94vh] sm:max-h-[90vh]">
+      <div className={`relative w-full max-w-4xl border shadow-2xl overflow-hidden flex flex-col max-h-[94vh] sm:max-h-[90vh] transition-colors ${
+        isLight ? 'bg-white border-gray-200 text-gray-900' : 'bg-[#050505] border-white/10 text-[#F5F7F5]'
+      }`}>
         {/* Header bar */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-[#0B2418]/60 shrink-0">
+        <div className={`flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b shrink-0 ${
+          isLight ? 'bg-emerald-900 text-white border-emerald-800' : 'bg-[#0B2418]/60 text-white border-white/10'
+        }`}>
           <div className="flex items-center gap-2.5 sm:gap-3">
             <span className="w-2 h-2 rounded-full bg-[#168A45]" />
             <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-[#63D98A]">
@@ -28,7 +36,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ sermon, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-white/70 hover:text-white hover:bg-white/10 transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center"
+            className="p-2 text-white/70 hover:text-white hover:bg-white/10 transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center cursor-pointer"
             aria-label="Close video player"
           >
             <X className="w-5 h-5" />
@@ -54,7 +62,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ sermon, onClose }) => {
                 href={sermon.videoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#168A45] hover:bg-[#13743a] text-white text-xs font-semibold tracking-widest uppercase transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#168A45] hover:bg-[#13743a] text-white text-xs font-semibold tracking-widest uppercase transition-colors cursor-pointer"
               >
                 <span>Open On YouTube Channel</span>
                 <ExternalLink className="w-4 h-4" />
@@ -64,9 +72,9 @@ export const VideoModal: React.FC<VideoModalProps> = ({ sermon, onClose }) => {
         </div>
 
         {/* Details footer */}
-        <div className="p-6 overflow-y-auto space-y-4 bg-[#050505]">
-          <div className="flex flex-wrap items-center gap-3 text-xs text-white/50">
-            <span className="text-[#63D98A] font-medium">{sermon.category}</span>
+        <div className={`p-6 overflow-y-auto space-y-4 ${isLight ? 'bg-white' : 'bg-[#050505]'}`}>
+          <div className={`flex flex-wrap items-center gap-3 text-xs ${isLight ? 'text-gray-500' : 'text-white/50'}`}>
+            <span className="text-[#168A45] dark:text-[#63D98A] font-semibold">{sermon.category}</span>
             <span>·</span>
             <span className="flex items-center gap-1">
               <Clock className="w-3.5 h-3.5" />
@@ -78,17 +86,19 @@ export const VideoModal: React.FC<VideoModalProps> = ({ sermon, onClose }) => {
 
           <h3
             id="video-modal-title"
-            className="font-serif-luxury text-2xl md:text-3xl font-medium text-white"
+            className={`font-serif-luxury text-2xl md:text-3xl font-medium ${isLight ? 'text-neutral-900' : 'text-white'}`}
           >
             {sermon.title}
           </h3>
 
-          <p className="text-sm text-white/70 font-light leading-relaxed">
+          <p className={`text-sm font-light leading-relaxed ${isLight ? 'text-gray-600' : 'text-white/70'}`}>
             {sermon.description}
           </p>
 
           {sermon.scripture && (
-            <div className="flex items-center gap-2 text-xs text-[#63D98A] font-serif-luxury italic pt-2 border-t border-white/5">
+            <div className={`flex items-center gap-2 text-xs text-[#168A45] dark:text-[#63D98A] font-serif-luxury italic pt-2 border-t ${
+              isLight ? 'border-gray-200' : 'border-white/5'
+            }`}>
               <BookOpen className="w-4 h-4 shrink-0" />
               <span>Scriptural Foundation: {sermon.scripture}</span>
             </div>
@@ -98,3 +108,4 @@ export const VideoModal: React.FC<VideoModalProps> = ({ sermon, onClose }) => {
     </div>
   );
 };
+

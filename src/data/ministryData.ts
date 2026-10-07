@@ -48,6 +48,28 @@ export const contactInfo = {
   officeHours: "[Insert official office hours]",
   prayerLine: "[Insert official prayer line]",
   partnershipEmail: "[Insert official partnership email]",
+  whatsappNumber: "+1234567890", // Replace with Prophet John Lord's official WhatsApp number
+};
+
+/**
+ * WHATSAPP CHAT INTEGRATION CONFIGURATION
+ * Direct click-to-chat with Prophet John Lord Ministry Desk
+ */
+export const whatsappConfig = {
+  // Replace with the real international number without '+' or symbols for wa.me link: e.g., '1234567890' or '233XXXXXXXXX'
+  phoneNumber: "1234567890",
+  displayNumber: "+1 (800) 555-LORD",
+  officialTitle: "Prophet John Lord Ministries",
+  statusSubtitle: "Online • Ministry Desk Typically Replies in Minutes",
+  welcomeMessage: "Shalom and Kingdom blessings! Welcome to Prophet John Lord Ministries. How can our team pray with you or assist your spiritual journey today?",
+  defaultMessage: "Shalom Prophet John Lord Ministries, I am connecting from the official website.",
+  quickOptions: [
+    { label: "🙏 Submit a Prayer Request", message: "Shalom Prophet John Lord, I would like to submit an urgent prayer request for:" },
+    { label: "📅 Inquire about Upcoming Events", message: "Shalom, I would like more details regarding upcoming conferences and services." },
+    { label: "🤝 Ministry Partnership", message: "Shalom, I would like to partner with Prophet John Lord Ministries to impact nations." },
+    { label: "📖 Prophetic Guidance & Counseling", message: "Shalom, I am seeking prophetic guidance and pastoral counseling." },
+    { label: "👋 Send Warm Shalom Greetings", message: "Shalom Prophet John Lord, sending warm blessings and greetings!" },
+  ],
 };
 
 /**

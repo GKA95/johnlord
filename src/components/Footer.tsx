@@ -11,12 +11,17 @@ import {
   Facebook, 
   Twitter 
 } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { ThemeToggle } from './ThemeToggle';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -41,7 +46,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="relative bg-[#050505] text-white border-t border-white/10 overflow-hidden">
+    <footer className={`relative border-t overflow-hidden transition-colors duration-300 ${
+      isLight 
+        ? 'bg-neutral-900 text-white border-neutral-800' 
+        : 'bg-[#050505] text-white border-white/10'
+    }`}>
       {/* Decorative emerald accent glow & fine grid */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#168A45] to-transparent" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0B2418]/40 rounded-full blur-3xl pointer-events-none" />
@@ -113,7 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                       onNavigate(item.id);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group text-left py-1 min-h-[36px] w-full"
+                    className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group text-left py-1 min-h-[36px] w-full cursor-pointer"
                   >
                     <span className="w-1.5 h-[1px] bg-[#168A45] group-hover:w-3 transition-all shrink-0" />
                     <span>{item.label}</span>
@@ -166,7 +175,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   onNavigate('contact');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-xs text-[#63D98A] hover:text-white font-medium inline-flex items-center gap-1 transition-colors min-h-[36px]"
+                className="text-xs text-[#63D98A] hover:text-white font-medium inline-flex items-center gap-1 transition-colors min-h-[36px] cursor-pointer"
               >
                 Submit Petition →
               </button>
@@ -176,15 +185,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 text-center sm:text-left">
-          <div>
-            © {new Date().getFullYear()} Prophet John Lord. All Rights Reserved.
+          <div className="flex items-center gap-3">
+            <span>© {new Date().getFullYear()} Prophet John Lord. All Rights Reserved.</span>
+            <ThemeToggle className="scale-90" />
           </div>
           
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
             <span className="text-white/30">Official International Ministry Portal</span>
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-1.5 text-white/60 hover:text-[#63D98A] transition-colors group p-1 min-h-[36px]"
+              className="flex items-center gap-1.5 text-white/60 hover:text-[#63D98A] transition-colors group p-1 min-h-[36px] cursor-pointer"
               aria-label="Back to top of page"
             >
               <span>Back to Top</span>

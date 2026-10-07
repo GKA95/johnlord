@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { PageId, SermonItem, EventItem, ResourceItem } from './types';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { VideoModal } from './components/VideoModal';
 import { EventModal } from './components/EventModal';
 import { ResourceModal } from './components/ResourceModal';
 import { PartnerModal } from './components/PartnerModal';
+import { WhatsAppChat } from './components/WhatsAppChat';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -17,7 +19,9 @@ import { ResourcesPage } from './pages/ResourcesPage';
 import { ContactPage } from './pages/ContactPage';
 import { GivePage } from './pages/GivePage';
 
-export default function App() {
+function MainAppLayout() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [selectedVideo, setSelectedVideo] = useState<SermonItem | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
@@ -55,8 +59,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#F5F7F5] flex flex-col font-sans-clean antialiased selection:bg-[#168A45] selection:text-white">
-      {/* Sticky Header */}
+    <div className={`min-h-screen flex flex-col font-sans-clean antialiased selection:bg-[#168A45] selection:text-white transition-colors duration-300 ${
+      isLight ? 'bg-[#F8FAF8] text-[#0A110D]' : 'bg-[#050505] text-[#F5F7F5]'
+    }`}>
+      {/* Sticky Header with Navigation and Dark/Light Mode Switcher */}
       <Navbar currentPage={currentPage} onNavigate={navigateTo} />
 
       {/* Main View Area */}
@@ -92,8 +98,11 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer */}
+      {/* Editorial Footer */}
       <Footer onNavigate={navigateTo} />
+
+      {/* Floating WhatsApp Ministry Chat Widget */}
+      <WhatsAppChat />
 
       {/* Global Interactive Modals */}
       <VideoModal
@@ -116,5 +125,13 @@ export default function App() {
         onClose={() => setIsGiveModalOpen(false)}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <MainAppLayout />
+    </ThemeProvider>
   );
 }
