@@ -37,19 +37,30 @@ export const WhatsAppChat: React.FC = () => {
     }
   }, [isOpen]);
 
-  const handleSendMessage = (customText?: string) => {
-    const textToSend = customText || message.trim() || whatsappConfig.defaultMessage;
+  const getWhatsAppUrl = (text?: string) => {
+    const textToSend = text || whatsappConfig.defaultMessage;
     const cleanPhone = whatsappConfig.phoneNumber.replace(/[^0-9]/g, '');
     const encoded = encodeURIComponent(textToSend);
-    const waUrl = `https://wa.me/${cleanPhone}?text=${encoded}`;
-    
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
-    setMessage('');
-    setIsOpen(false);
+    return `https://wa.me/${cleanPhone}?text=${encoded}`;
   };
 
-  const handleQuickOptionClick = (presetText: string) => {
-    handleSendMessage(presetText);
+  const handleSendMessage = (customText?: string) => {
+    const textToSend = customText || message.trim() || whatsappConfig.defaultMessage;
+    const waUrl = getWhatsAppUrl(textToSend);
+    
+    try {
+      const link = document.createElement('a');
+      link.href = waUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch {
+      window.location.href = waUrl;
+    }
+    setMessage('');
+    setIsOpen(false);
   };
 
   return (
@@ -171,9 +182,12 @@ export const WhatsAppChat: React.FC = () => {
               </p>
               <div className="flex flex-col gap-1.5">
                 {whatsappConfig.quickOptions.map((opt, idx) => (
-                  <button
+                  <a
                     key={idx}
-                    onClick={() => handleQuickOptionClick(opt.message)}
+                    href={getWhatsAppUrl(opt.message)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
                     className={`text-left px-3 py-2 rounded-xl text-xs transition-all flex items-center justify-between group border ${
                       theme === 'light'
                         ? 'bg-white hover:bg-emerald-50 text-gray-700 hover:text-[#0B3B20] border-gray-200 hover:border-[#168A45]/40 shadow-xs'
@@ -182,7 +196,7 @@ export const WhatsAppChat: React.FC = () => {
                   >
                     <span>{opt.label}</span>
                     <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#168A45] group-hover:translate-x-0.5 transition-transform" />
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
