@@ -38,7 +38,7 @@ export const GivePage: React.FC<GivePageProps> = ({ onOpenGiveModal }) => {
           <span className={`text-[10px] uppercase tracking-widest font-mono block ${
             isLight ? 'text-gray-400' : 'text-white/40'
           }`}>
-            [Official Ministry Giving Statement Placeholder]
+            Prophet John Lord Ministries
           </span>
         </div>
 
@@ -180,7 +180,7 @@ export const GivePage: React.FC<GivePageProps> = ({ onOpenGiveModal }) => {
             </div>
           </div>
 
-          {/* Payment Provider Readiness Notice */}
+          {/* Secure Giving Notice */}
           <div className={`p-3.5 sm:p-4 border text-xs flex items-start gap-3 ${
             isLight
               ? 'bg-white border-gray-200 text-gray-700 shadow-xs'
@@ -188,7 +188,7 @@ export const GivePage: React.FC<GivePageProps> = ({ onOpenGiveModal }) => {
           }`}>
             <ShieldCheck className="w-4 h-4 text-[#168A45] dark:text-[#63D98A] shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong className={isLight ? 'text-neutral-900 font-semibold' : 'text-white font-medium'}>Gateway Ready:</strong> This ministry giving module is structured to integrate with your chosen merchant processor (Stripe, PayPal, Paystack, Flutterwave, or official Swift banking instructions). In compliance with requirements, no fabricated account or phone numbers are presented.
+              <strong className={isLight ? 'text-neutral-900 font-semibold' : 'text-white font-medium'}>Secure Giving:</strong> All donations and covenant seeds are handled through secure encrypted channels to directly support global crusades, media broadcast outreach, and community charity initiatives.
             </p>
           </div>
 

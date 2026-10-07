@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SermonItem } from '../types';
-import { placeholderSermons, cmsAdapterConfig } from '../data/ministryData';
-import { Play, Search, Clock, BookOpen, Filter, Database } from 'lucide-react';
+import { placeholderSermons } from '../data/ministryData';
+import { Play, Search, Clock, BookOpen, Filter } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 interface SermonsPageProps {
@@ -44,18 +44,8 @@ export const SermonsPage: React.FC<SermonsPageProps> = ({ onOpenVideo }) => {
         <p className={`text-sm md:text-base max-w-2xl font-light leading-relaxed ${
           isLight ? 'text-gray-600' : 'text-white/70'
         }`}>
-          Access the prophetic archive of Prophet John Lord. Grounded in the unadulterated Word of God and accompanied by Holy Spirit illumination.
+          Experience the prophetic messages and teachings of Prophet John Lord. Grounded in the unadulterated Word of God and accompanied by Holy Spirit illumination.
         </p>
-
-        {/* CMS Readiness Badge */}
-        <div className={`inline-flex items-center gap-2 px-3 py-1.5 border text-[10px] sm:text-[11px] ${
-          isLight 
-            ? 'bg-white border-gray-200 text-gray-700 shadow-xs' 
-            : 'bg-white/5 border-white/10 text-white/60'
-        }`}>
-          <Database className="w-3.5 h-3.5 text-[#168A45] dark:text-[#63D98A] shrink-0" />
-          <span>CMS Ready: Prepared for WordPress REST API connection (`/wp-json/wp/v2/sermons`)</span>
-        </div>
       </section>
 
       {/* Filter and Search Bar */}

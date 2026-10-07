@@ -210,11 +210,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             }`}>
               &ldquo;{ministryProfile.introduction}&rdquo;
             </p>
-            <p className={`text-[10px] sm:text-xs uppercase tracking-widest font-mono ${
-              isLight ? 'text-gray-400' : 'text-white/40'
-            }`}>
-              [Editable Introductory Narrative Placeholder]
-            </p>
           </div>
 
           <div className="pt-2 sm:pt-4">
@@ -273,11 +268,6 @@ export const HomePage: React.FC<HomePageProps> = ({
               <p className="text-sm md:text-base font-light italic font-serif-luxury leading-relaxed">
                 {ministryProfile.biography}
               </p>
-              <span className={`text-[10px] uppercase tracking-widest font-mono block ${
-                isLight ? 'text-gray-400' : 'text-white/40'
-              }`}>
-                Official Biographical Statement Placeholder
-              </span>
             </div>
 
             {/* Editable Subsections Grid */}

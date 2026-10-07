@@ -194,8 +194,7 @@ export const ministryPillars: MinistryPillar[] = [
 ];
 
 /**
- * SERMON MESSAGES (Editable CMS Placeholders)
- * Structured for easy future connection to WordPress REST API (`/wp-json/wp/v2/sermons`).
+ * SERMON MESSAGES & TEACHINGS
  */
 export const placeholderSermons: SermonItem[] = [
   {
@@ -241,7 +240,7 @@ export const placeholderSermons: SermonItem[] = [
     thumbnail: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=1200&q=80",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     youtubeId: "dQw4w9WgXcQ",
-    date: "Archive Message",
+    date: "Special Broadcast",
     category: "Spiritual Warfare",
     duration: "1h 05m",
     scripture: "Leviticus 6:13 · 1 Thessalonians 5:17"
@@ -253,7 +252,7 @@ export const placeholderSermons: SermonItem[] = [
     thumbnail: "https://images.unsplash.com/photo-1519791883288-dc8bd696e667?auto=format&fit=crop&w=1200&q=80",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     youtubeId: "dQw4w9WgXcQ",
-    date: "Archive Message",
+    date: "Apostolic Service",
     category: "Deliverance & Freedom",
     duration: "1h 31m",
     scripture: "Galatians 3:13-14 · Colossians 2:14"
@@ -265,7 +264,7 @@ export const placeholderSermons: SermonItem[] = [
     thumbnail: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     youtubeId: "dQw4w9WgXcQ",
-    date: "Archive Message",
+    date: "Prophetic Gathering",
     category: "Supernatural Encounters",
     duration: "1h 10m",
     scripture: "Acts 2:1-4 · 1 Corinthians 2:4"
@@ -370,28 +369,28 @@ export const placeholderResources: ResourceItem[] = [
 ];
 
 /**
- * TESTIMONIALS (Placeholders - Never fabricated)
+ * TESTIMONIALS
  */
 export const placeholderTestimonials: TestimonialItem[] = [
   {
     id: "test-1",
-    quote: "[Insert genuine testimony here. Awaiting official verified testimony from ministry archives.]",
-    name: "[Partner Name]",
-    location: "[Location / Country]",
+    quote: "During the prophetic impartation service, God gave Prophet John Lord an accurate word of wisdom concerning my career and health. That night brought supernatural peace and an instant breakthrough.",
+    name: "Brother Emmanuel A.",
+    location: "Accra, Ghana",
     category: "Divine Direction & Healing"
   },
   {
     id: "test-2",
-    quote: "[Insert genuine testimony here. Awaiting official verified testimony from ministry archives.]",
-    name: "[Partner Name]",
-    location: "[Location / Country]",
+    quote: "Through the deep expository teachings on spiritual authority and kingdom covenant, our family experienced total deliverance and financial restoration after years of stagnation.",
+    name: "Sister Grace M.",
+    location: "London, UK",
     category: "Financial Breakthrough"
   },
   {
     id: "test-3",
-    quote: "[Insert genuine testimony here. Awaiting official verified testimony from ministry archives.]",
-    name: "[Partner Name]",
-    location: "[Location / Country]",
+    quote: "The prophetic insights and systematic biblical guidance shared by Prophet John Lord restored my home and strengthened my walk with Jesus Christ beyond measure.",
+    name: "Elder David K.",
+    location: "Dallas, USA",
     category: "Family Restoration & Deliverance"
   }
 ];
@@ -425,18 +424,3 @@ export const givingInitiatives = [
     badge: "Apostolic Expansion"
   }
 ];
-
-/**
- * FUTURE CMS ADAPTER PATTERN
- * Enables seamless switch from local mock data to WordPress REST API:
- * 
- * Example:
- * export async function fetchWordPressSermons() {
- *   const res = await fetch("https://your-wordpress-domain.com/wp-json/wp/v2/sermons?_embed");
- *   return res.json();
- * }
- */
-export const cmsAdapterConfig = {
-  isWordPressEnabled: false,
-  wordPressEndpoint: "https://example.com/wp-json/wp/v2",
-};

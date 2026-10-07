@@ -88,11 +88,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 }`}>
                   {ministryProfile.biography}
                 </p>
-                <div className={`text-[10px] sm:text-[11px] font-mono uppercase tracking-wider ${
-                  isLight ? 'text-gray-400' : 'text-white/40'
-                }`}>
-                  [Official ministerial biography placeholder awaiting archive upload]
-                </div>
               </div>
             </div>
 

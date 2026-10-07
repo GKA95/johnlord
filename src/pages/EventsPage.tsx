@@ -142,7 +142,7 @@ export const EventsPage: React.FC<EventsPageProps> = ({ onOpenEvent }) => {
         }`}>
           <ShieldCheck className="w-4 h-4 text-[#168A45] shrink-0 mt-0.5" />
           <p>
-            Event dates and auditorium locations shown above represent upcoming calendar placeholders. Verified schedules will synchronize directly upon official ministerial publication.
+            Convocation and service locations are subject to regional venue arrangements. Please register in advance to receive event updates, protocol details, and seat confirmations.
           </p>
         </div>
       </section>
